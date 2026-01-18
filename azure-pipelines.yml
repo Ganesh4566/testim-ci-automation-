@@ -14,7 +14,7 @@ steps:
 
     echo "Running Testim tests (STAGING)"
     testim \
-      --token "$(TESTIM_TOKEN)" \
+      --token "NYNp46OWeGXYjfoEFQhBv3xOsuwXhfXaHsVKM9tpZFnohltcE7" \
       --project "SlfFgrPgc5jlfXebFImn" \
       --branch "Ganesh_test" \
       --grid "Testim-Grid" \

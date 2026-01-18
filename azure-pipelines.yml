@@ -1,22 +1,30 @@
+# Use self-hosted Mac agent
+pool:
+  name: local-mac-agent   # or local-mac-agent if you used that pool name
+
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: 'lts'
-    # You can also change 'lts' to any supported LTS Node.js version.
+    versionSpec: '18.x'
   displayName: 'Install Node.js'
 
 - script: |
+    echo "Installing Testim CLI"
     npm install -g @testim/testim-cli
+
+    echo "Running Testim tests for STAGING environment"
     testim \
-    --token "NYNp46OWeGXYjfoEFQhBv3xOsuwXhfXaHsVKM9tpZFnohltcE7" \
-    --project "SlfFgrPgc5jlfXebFImn" \
-    --grid "Testim-Grid" \
-    --branch "Ganesh_test" \
-    --report-file testim-tests-report.xml
-  displayName: 'npm install testim-cli and run tests'
+      --token "NYNp46OWeGXYjfoEFQhBv3xOsuwXhfXaHsVKM9tpZFnohltcE7" \
+      --project "SlfFgrPgc5jlfXebFImn" \
+      --branch "Ganesh_test" \
+      --grid "Testim-Grid" \
+      --testId "hGY9vBhDugn5WI6F" \
+      --params '{"environment":"staging"}' \
+      --report-file testim-tests-report.xml
+  displayName: 'Run Testim Tests (Staging)'
 
 - task: PublishTestResults@2
-  displayName: 'publish testim test results'
+  displayName: 'Publish Testim Test Results'
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/testim-tests-report.xml'

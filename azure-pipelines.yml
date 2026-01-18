@@ -1,26 +1,22 @@
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '18.x'
+    versionSpec: 'lts'
+    # You can also change 'lts' to any supported LTS Node.js version.
   displayName: 'Install Node.js'
 
 - script: |
-    echo "Installing Testim CLI"
     npm install -g @testim/testim-cli
-
-    echo "Running Testim test for STAGING"
     testim \
-      --token "NYNp46OWeGXYjfoEFQhBv3xOsuwXhfXaHsVKM9tpZFnohltcE7" \
-      --project "SlfFgrPgc5jlfXebFImn" \
-      --branch "Ganesh_test" \
-      --grid "Testim-Grid" \
-      --testId "hGY9vBhDugn5WI6F" \
-      --params '{"environment":"staging"}' \
-      --report-file testim-tests-report.xml
-  displayName: 'Run Testim Tests (Staging)'
+    --token "NYNp46OWeGXYjfoEFQhBv3xOsuwXhfXaHsVKM9tpZFnohltcE7" \
+    --project "SlfFgrPgc5jlfXebFImn" \
+    --grid "Testim-Grid" \
+    --branch "Ganesh_test" \
+    --report-file testim-tests-report.xml
+  displayName: 'npm install testim-cli and run tests'
 
 - task: PublishTestResults@2
-  displayName: 'Publish Testim Results'
+  displayName: 'publish testim test results'
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '**/testim-tests-report.xml’
+    testResultsFiles: '**/testim-tests-report.xml'

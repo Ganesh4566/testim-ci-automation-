@@ -16,9 +16,9 @@ steps:
     testim \
       --token "NYNp46OWeGXYjfoEFQhBv3xOsuwXhfXaHsVKM9tpZFnohltcE7" \
       --project "SlfFgrPgc5jlfXebFImn" \
-      --branch "Ganesh_test" \
+      --branch "testim_support_79434" \
+      --testId "TmCcNa0kNBu7luKX" \
       --grid "Testim-Grid" \
-      --testId hGY9vBhDugn5WI6F \
       --params '{"environment":"staging"}' \
       --report-file testim-tests-report.xml
   displayName: 'Run Testim Tests (Staging)'

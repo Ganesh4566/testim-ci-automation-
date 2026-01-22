@@ -19,7 +19,7 @@ steps:
       --branch "testim_support_79434" \
       --testId "TmCcNa0kNBu7luKX" \
       --grid "Testim-Grid" \
-      --params '{"environment":"staging"}' \
+      --params '{"environment":"qa"}' \
       --report-file testim-tests-report.xml
   displayName: 'Run Testim Tests (Staging)'
 
